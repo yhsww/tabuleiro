@@ -111,29 +111,38 @@ public class Jogo {
         System.out.println("----- RODADA " + this.rodada + " -----");
         for (Jogador jogador : Jogo.jogadores) {
 
-            System.out.println("Jogador da vez: ");
-            System.out.println(jogador.getNome() + " - " + jogador.getCor().getTipoCor() + " - Posição: " + jogador.getPosicao());
+            if(!jogador.getPulaRodada()){
 
-            novaRodada = jogador.jogarDados();
+                System.out.println("Jogador da vez: ");
+                System.out.println(jogador.getNome() + " - " + jogador.getCor().getTipoCor() + " - Posição: " + jogador.getPosicao());
 
-            while(novaRodada){
-                System.out.println(jogador.getNome() + " joga novamente");
-                jogador.jogarDados();
-            }
+                novaRodada = jogador.jogarDados();
 
-            for(Casa casa: Tabuleiro.casasTabuleiro){
+                while(novaRodada){
+                    System.out.println(jogador.getNome() + " joga novamente");
+                    jogador.jogarDados();
+                }
 
-                if(casa instanceof CasaMagica casaMagica){
-                    casaMagica.aplicarEfeito(jogador, Jogo.jogadores);
-                    jogador.qtdRodadas += 1;
-                }else if(casa instanceof CasaPularRodada casaPularRodada){
-                        casaPularRodada.aplicarEfeito(jogador);
+                for(Casa casa: Tabuleiro.casasTabuleiro){
 
-                    }else{
-                        casa.aplicarEfeito(jogador);
+                    if(casa instanceof CasaMagica casaMagica){
+                        casaMagica.aplicarEfeito(jogador, Jogo.jogadores);
                         jogador.qtdRodadas += 1;
-                    }
+                    }else if(casa instanceof CasaPularRodada casaPularRodada){
+                            casaPularRodada.aplicarEfeito(jogador);
+                        }else{
+                            casa.aplicarEfeito(jogador);
+                            jogador.qtdRodadas += 1;
+                        }
+                }
+
+            }else{
+
+                System.out.println("Jogador só jogará na próxima rodada!");
+                jogador.setPulaRodada(false);
             }
+
+        
             
         }
 
