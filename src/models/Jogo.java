@@ -123,7 +123,7 @@ public class Jogo {
                     jogador.jogarDados();
                 }
 
-                for(Casa casa: Tabuleiro.casasTabuleiro){
+                Casa casa = Tabuleiro.casasTabuleiro.get(jogador.getPosicao() - 1);
 
                     if(casa instanceof CasaMagica casaMagica){
                         casaMagica.aplicarEfeito(jogador, Jogo.jogadores);
@@ -134,16 +134,14 @@ public class Jogo {
                             casa.aplicarEfeito(jogador);
                             jogador.qtdRodadas += 1;
                         }
-                }
+                }else{
+                    
+                    System.out.println("Jogador só jogará na próxima rodada!");
+                    jogador.setPulaRodada(false);
 
-            }else{
-
-                System.out.println("Jogador só jogará na próxima rodada!");
-                jogador.setPulaRodada(false);
             }
 
         
-            
         }
 
 
