@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CasaSurpresa extends Casa{
@@ -8,9 +6,11 @@ public class CasaSurpresa extends Casa{
         super(posicao);
     }
     
-    public Jogador aplicarEfeito(Jogador jogador){
+    public void aplicarEfeito(Jogador jogador){
 
       //1 - azarado, 2 - sortudo, 3 - normal
+
+      System.out.println("Casa Surpresa: altera o tipo de jogador!");
 
         int cartaSorteada = ThreadLocalRandom.current().nextInt(1, 3);
 
@@ -29,24 +29,20 @@ public class CasaSurpresa extends Casa{
         if(cartaSorteada == 1){
             System.out.println("Carta Surpresa: jogador agora é azarado!");
             System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
-            JogadorAzarado jogadorAzarado = new JogadorAzarado(jogador.getNome(), jogador.getCor());
-            jogadorAzarado.setPosicao(jogador.getPosicao());
-            return jogadorAzarado;
+            jogador = new JogadorAzarado(jogador.getNome(), jogador.getCor());
+            return;
         }
 
         if(cartaSorteada == 2){
             System.out.println("Carta Surpesa: jogador agora é sortudo!");
             System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
-            JogadorSortudo jogadorSortudo = new JogadorSortudo(jogador.getNome(), jogador.getCor());
-            jogadorSortudo.setPosicao(jogador.getPosicao());
-            return jogadorSortudo;
+            jogador = new JogadorSortudo(jogador.getNome(), jogador.getCor());
+            return;
         }
 
             System.out.println("Carta Surpesa: jogador agora é normal!");
             System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
-            JogadorNormal jogadorNormal = new JogadorNormal(jogador.getNome(), jogador.getCor());
-            jogadorNormal.setPosicao(jogador.getPosicao());
-            return jogadorNormal;
+            jogador = new JogadorNormal(jogador.getNome(), jogador.getCor());
 
         
     }

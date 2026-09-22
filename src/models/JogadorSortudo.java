@@ -6,17 +6,25 @@ public class JogadorSortudo extends Jogador{
         super(nome, cor);
     }
 
-    public int jogarDados(){
-
-        int resultado = 0;
+    public boolean jogarDados(){
+        
+        boolean jogaDeNovo = false;
+        int resultado = 0, dado1 = 0, dado2 = 0;
 
         while (resultado <= 6) {
-            int dado1 = ThreadLocalRandom.current().nextInt(1, 6);
-            int dado2 = ThreadLocalRandom.current().nextInt(1, 6);
+            dado1 = ThreadLocalRandom.current().nextInt(1, 6);
+            dado2 = ThreadLocalRandom.current().nextInt(1, 6);
             resultado = dado1 + dado2;
+            this.posicao += resultado;
         }
 
-        return this.resultadoAndar = resultado;
+        System.out.println(this.nome + " anda " + resultado + " casas");
+
+        if(dado1 == dado2){
+            jogaDeNovo = true;
+        }
+
+        return jogaDeNovo;
         
     }
 }

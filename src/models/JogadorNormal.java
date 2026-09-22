@@ -6,11 +6,23 @@ public class JogadorNormal extends Jogador{
         super(nome, cor);
     }
 
-    public int andarCasas(){
+    public boolean jogarDados(){
+
+        boolean jogaDeNovo = false;
 
         int dado1 = ThreadLocalRandom.current().nextInt(1, 6);
         int dado2 = ThreadLocalRandom.current().nextInt(1, 6);
-        return this.resultadoAndar = dado1 + dado2;   
+
+        int resultado = dado1 + dado2;
+        this.posicao += resultado;
+
+        System.out.println(this.nome + " anda " + resultado + " casas");
+
+        if(dado1 == dado2){
+            jogaDeNovo = true;
+        }
+
+        return jogaDeNovo; 
     }
     
 }

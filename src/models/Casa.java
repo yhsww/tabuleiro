@@ -1,4 +1,6 @@
-public abstract class Casa {
+import java.util.List;
+
+public class Casa {
 
     protected int posicao;
 
@@ -14,7 +16,11 @@ public abstract class Casa {
         this.posicao = posicao;
     }
 
-    public abstract Jogador aplicarEfeito(Jogador jogador);
+    public void aplicarEfeito(Jogador jogador){
+
+        System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
+        
+    }
 
     
 }

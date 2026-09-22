@@ -3,16 +3,35 @@ public abstract class Jogador {
     protected String nome;
     protected Cor cor;
     protected int posicao;
-    protected int resultadoAndar;
+    protected boolean pulaRodada;
+    protected int qtdRodadas;
 
     public Jogador(String nome, Cor cor){
         this.nome = nome;
         this.cor = cor;
         this.posicao = 0;
+        this.pulaRodada = false;
+        this.qtdRodadas = 0;
+    }
+
+    public void setQtdRodadas(int qtdRodadas){
+        this.qtdRodadas = qtdRodadas;
+    }
+
+    public int getQtdRodadas(){
+        return this.qtdRodadas;
     }
 
     public void setNome(String nome){
         this.nome = nome;
+    }
+
+    public void setPulaRodada(boolean pulaRodada){
+        this.pulaRodada = pulaRodada;
+    }
+
+    public boolean getPulaRodada(){
+        return this.pulaRodada;
     }
 
     public String getNome(){
@@ -35,10 +54,6 @@ public abstract class Jogador {
         return this.cor;
     }
 
-    public int getResultadoDados(){
-        return this.resultadoAndar;
-    }
-
-    public abstract int jogarDados();
+    public abstract boolean jogarDados();
 
 }

@@ -4,11 +4,9 @@ public class CasaNeutra extends Casa{
         super(posicao);
     }
 
-    public Jogador aplicarEfeito(Jogador jogador){
+    public void aplicarEfeito(Jogador jogador){
 
-        System.out.println(jogador.getNome() + " está na casa " + this.posicao);
-
-        return jogador;
+        System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
     }
 
 }
