@@ -86,7 +86,7 @@ public class Jogo {
         
     public void iniciarRodada(){
 
-        if(this.rodada >= Tabuleiro.TOTAL_CASAS){
+        if(Jogo.jogadores.stream().anyMatch(jogador -> jogador.getPosicao() >= 40)){
 
             System.out.println("------- FIM DE JOGO -------");
             System.out.println("Total de rodadas: " + this.rodada);
@@ -125,10 +125,14 @@ public class Jogo {
 
                 if(casa instanceof CasaMagica casaMagica){
                     casaMagica.aplicarEfeito(jogador, Jogo.jogadores);
-                }else{
-                    casa.aplicarEfeito(jogador);
                     jogador.qtdRodadas += 1;
-                }
+                }else if(casa instanceof CasaPularRodada casaPularRodada){
+                        casaPularRodada.aplicarEfeito(jogador);
+
+                    }else{
+                        casa.aplicarEfeito(jogador);
+                        jogador.qtdRodadas += 1;
+                    }
             }
             
         }
