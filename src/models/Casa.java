@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Casa {
+public abstract class Casa {
 
     protected int posicao;
 
@@ -16,11 +16,6 @@ public class Casa {
         this.posicao = posicao;
     }
 
-    public void aplicarEfeito(Jogador jogador){
+    public abstract void aplicarEfeito(Jogador jogador, List<Jogador> jogadores);
 
-        System.out.println(jogador.getNome() + " está na casa " + jogador.getPosicao());
-        
-    }
-
-    
 }

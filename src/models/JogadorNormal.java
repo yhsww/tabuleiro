@@ -10,12 +10,14 @@ public class JogadorNormal extends Jogador{
 
         boolean jogaDeNovo = false;
 
-        int dado1 = ThreadLocalRandom.current().nextInt(1, 6);
-        int dado2 = ThreadLocalRandom.current().nextInt(1, 6);
+        int dado1 = ThreadLocalRandom.current().nextInt(1, 7);
+        int dado2 = ThreadLocalRandom.current().nextInt(1, 7);
 
         int resultado = dado1 + dado2;
         this.posicao += resultado;
 
+        System.out.println("Dado 1: " + dado1);
+        System.out.println("Dado 2: " + dado2);
         System.out.println(this.nome + " anda " + resultado + " casas");
 
         if(dado1 == dado2){

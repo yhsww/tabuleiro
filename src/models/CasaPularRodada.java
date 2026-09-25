@@ -1,10 +1,12 @@
+import java.util.List;
+
 public class CasaPularRodada extends Casa{
 
     public CasaPularRodada(int posicao){
         super(posicao);
     }
 
-    public void aplicarEfeito(Jogador jogador){
+    public void aplicarEfeito(Jogador jogador, List<Jogador> jogadores){
 
         System.out.println("Casa Pula Rodada: jogador passará a próxima rodada sem jogar!");
         jogador.setPulaRodada(true);

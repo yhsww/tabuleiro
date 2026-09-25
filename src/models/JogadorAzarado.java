@@ -9,15 +9,20 @@ public class JogadorAzarado extends Jogador{
     public boolean jogarDados(){
 
         boolean jogaDeNovo = false;
-        int resultado = 0, dado1 = 0, dado2 = 0;
 
-        while (resultado > 6) {
-            dado1 = ThreadLocalRandom.current().nextInt(1, 6);
-            dado2 = ThreadLocalRandom.current().nextInt(1, 6);
+        int dado1 = 0, dado2 = 0, resultado = 0;
+
+        do{
+            dado1 = ThreadLocalRandom.current().nextInt(1, 7);
+            dado2 = ThreadLocalRandom.current().nextInt(1, 7);
             resultado = dado1 + dado2;
-            this.posicao += resultado;
-        }
 
+        }while(resultado > 6);
+
+        this.posicao += resultado;
+
+        System.out.println("Dado 1: " + dado1);
+        System.out.println("Dado 2: " + dado2);
         System.out.println(this.nome + " anda " + resultado + " casas");
 
         if(dado1 == dado2){

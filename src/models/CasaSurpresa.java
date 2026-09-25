@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CasaSurpresa extends Casa{
@@ -6,25 +7,22 @@ public class CasaSurpresa extends Casa{
         super(posicao);
     }
     
-    public void aplicarEfeito(Jogador jogador){
+    public void aplicarEfeito(Jogador jogador, List<Jogador> jogadores){
 
       //1 - azarado, 2 - sortudo, 3 - normal
 
       System.out.println("Casa Surpresa: altera o tipo de jogador!");
 
-        int cartaSorteada = ThreadLocalRandom.current().nextInt(1, 3);
+        int cartaSorteada = ThreadLocalRandom.current().nextInt(1, 4);
+        boolean repetido;
 
-        while(cartaSorteada == 1 && jogador instanceof JogadorAzarado){
-            cartaSorteada = ThreadLocalRandom.current().nextInt(1, 3);
-        }
+        do{
 
-        while(cartaSorteada == 2 && jogador instanceof JogadorSortudo){
-            cartaSorteada = ThreadLocalRandom.current().nextInt(1, 3);
-        }
+            repetido = (cartaSorteada == 1 && jogador instanceof JogadorAzarado ||
+                        cartaSorteada == 2 && jogador instanceof JogadorSortudo ||
+                        cartaSorteada == 3 && jogador instanceof JogadorNormal);
 
-        while(cartaSorteada == 3 && jogador instanceof JogadorNormal){
-            cartaSorteada = ThreadLocalRandom.current().nextInt(1, 3);
-        }
+        }while(repetido);
 
         if(cartaSorteada == 1){
             System.out.println("Carta Surpresa: jogador agora é azarado!");

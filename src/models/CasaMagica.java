@@ -12,16 +12,21 @@ public class CasaMagica extends Casa{
         System.out.println("Casa Mágica: jogador troca de posição com o último jogador!");
         List<Jogador> jogadoresPorPosicao = jogadores.stream().sorted(Comparator.comparing(Jogador::getPosicao)).toList();
 
-        if(jogadoresPorPosicao.get(0) == jogador){
-            System.out.println("Jogador deve permancer na mesma casa");
+        Jogador ultimo = jogadoresPorPosicao.get(0);
+
+        if(ultimo.equals(jogador)){
+            System.out.println("O jogador deve permanecer na mesma casa");
             return;
         }
 
-        Jogador temp = jogador;
-        jogador.setPosicao(jogadoresPorPosicao.get(0).getPosicao());
-        jogadoresPorPosicao.get(0).setPosicao(temp.getPosicao());
+        int posicaoAtual = jogador.getPosicao();
+        int posicaoUltimo = jogadoresPorPosicao.get(0).getPosicao();
 
-        System.out.println(jogador.getNome() + " está na posição " + jogador.getPosicao());
+        jogador.setPosicao(posicaoUltimo);
+        ultimo.setPosicao(posicaoAtual);
+
+        System.out.println(jogador.getNome() + " agora está na casa " + jogador.getPosicao());
+        System.out.println(ultimo + " agora está na casa " + ultimo.getPosicao());
 
     }
     

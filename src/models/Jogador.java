@@ -56,4 +56,8 @@ public abstract class Jogador {
 
     public abstract boolean jogarDados();
 
+    public String toString(){
+        return "Nome: " + this.nome + " |Cor: " + this.cor.getTipoCor() + " |Posição: " + this.posicao;
+    }
+
 }
